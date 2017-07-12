@@ -20,7 +20,8 @@ public class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     private func initialize()
     {
         // default color
-        circleColors.append(UIColor(red: 140.0/255.0, green: 234.0/255.0, blue: 255.0/255.0, alpha: 1.0))
+        //circleColors.append(UIColor(red: 140.0/255.0, green: 234.0/255.0, blue: 255.0/255.0, alpha: 1.0))
+        circleColors.append(UIColor.blackColor())
     }
     
     public required init()
@@ -71,7 +72,7 @@ public class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     public var isDrawCubicEnabled: Bool { return drawCubicEnabled }
     
     /// The radius of the drawn circles.
-    public var circleRadius = CGFloat(8.0)
+    public var circleRadius = CGFloat(3.0)
     
     public var circleColors = [UIColor]()
     
@@ -112,7 +113,7 @@ public class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     public var circleHoleColor = UIColor.whiteColor()
     
     /// True if drawing circles for this DataSet is enabled, false if not
-    public var drawCircleHoleEnabled = true
+    public var drawCircleHoleEnabled = false
     
     /// - returns: true if drawing the circle-holes is enabled, false if not.
     public var isDrawCircleHoleEnabled: Bool { return drawCircleHoleEnabled }

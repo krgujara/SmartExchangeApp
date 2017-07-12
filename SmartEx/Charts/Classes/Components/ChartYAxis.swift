@@ -51,7 +51,7 @@ public class ChartYAxis: ChartAxisBase
     public var inverted = false
     
     /// if true, the y-label entries will always start at zero
-    public var startAtZeroEnabled = true
+    public var startAtZeroEnabled = false
     
     /// if true, the set number of y-labels will be forced
     public var forceLabelsEnabled = false

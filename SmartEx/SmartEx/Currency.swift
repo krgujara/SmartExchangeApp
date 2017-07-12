@@ -9,10 +9,10 @@
 import Foundation
 
 class Currency {
-    var currencyCode : String
-    var fullCurrencyName : String
+    var currencyCode : String?
+    var fullCurrencyName : String?
     
-    init(currencyCode: String, fullCurrencyName: String) {
+    init(currencyCode: String?, fullCurrencyName: String?) {
         self.currencyCode = currencyCode
         self.fullCurrencyName = fullCurrencyName
     }

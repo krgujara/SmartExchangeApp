@@ -12,6 +12,10 @@
 		C127E8361E99835B00174E5D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C127E8301E9982D700174E5D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1878A6A1EA9A74F00B12C78 /* CurrencyLayerListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */; };
 		C1878A6F1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */; };
+		C1878A721EACD95D00B12C78 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A711EACD95D00B12C78 /* DateRange.swift */; };
+		C1878A761EAD04B900B12C78 /* HistoricalDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */; };
+		C1878A781EAD115300B12C78 /* HistoricalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A771EAD115300B12C78 /* HistoricalData.swift */; };
+		C1878A7A1EAD137F00B12C78 /* HistoricalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */; };
 		C1CCDB2F1E959C7000DBBA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCDB2E1E959C7000DBBA70 /* AppDelegate.swift */; };
 		C1CCDB341E959C7000DBBA70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1CCDB321E959C7000DBBA70 /* Main.storyboard */; };
 		C1CCDB361E959C7000DBBA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1CCDB351E959C7000DBBA70 /* Assets.xcassets */; };
@@ -76,6 +80,10 @@
 		C127E8291E9982D700174E5D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerListAPI.swift; sourceTree = "<group>"; };
 		C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerLiveAPI.swift; sourceTree = "<group>"; };
+		C1878A711EACD95D00B12C78 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
+		C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalDataAPI.swift; sourceTree = "<group>"; };
+		C1878A771EAD115300B12C78 /* HistoricalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalData.swift; sourceTree = "<group>"; };
+		C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalDataStore.swift; sourceTree = "<group>"; };
 		C1CCDB2B1E959C7000DBBA70 /* SmartEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1CCDB2E1E959C7000DBBA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1CCDB331E959C7000DBBA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,16 +148,20 @@
 				C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */,
 				C1CCDB401E959D8C00DBBA70 /* BaseCurrencySelector.swift */,
 				C1CCDB4A1E966AAD00DBBA70 /* BaseCurrencyCell.swift */,
-				C1CCDB351E959C7000DBBA70 /* Assets.xcassets */,
-				C1CCDB371E959C7000DBBA70 /* LaunchScreen.storyboard */,
-				C1CCDB3A1E959C7000DBBA70 /* Info.plist */,
-				C127E8291E9982D700174E5D /* Charts.xcodeproj */,
 				C1CCDB4C1E968AA000DBBA70 /* ConversionTableViewController.swift */,
 				C1CCDB521E96957B00DBBA70 /* ConversoinRate.swift */,
 				C1CCDB541E969AD600DBBA70 /* ConversionRateStore.swift */,
 				C1CCDB561E969E4E00DBBA70 /* ConversionRatesCell.swift */,
-				C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */,
 				C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */,
+				C1878A711EACD95D00B12C78 /* DateRange.swift */,
+				C127E8291E9982D700174E5D /* Charts.xcodeproj */,
+				C1CCDB351E959C7000DBBA70 /* Assets.xcassets */,
+				C1CCDB3A1E959C7000DBBA70 /* Info.plist */,
+				C1CCDB371E959C7000DBBA70 /* LaunchScreen.storyboard */,
+				C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */,
+				C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */,
+				C1878A771EAD115300B12C78 /* HistoricalData.swift */,
+				C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */,
 			);
 			path = SmartEx;
 			sourceTree = "<group>";
@@ -264,10 +276,14 @@
 				C1CCDB551E969AD600DBBA70 /* ConversionRateStore.swift in Sources */,
 				C127E8221E986FC600174E5D /* HistoricalDataViewController.swift in Sources */,
 				C1878A6A1EA9A74F00B12C78 /* CurrencyLayerListAPI.swift in Sources */,
+				C1878A781EAD115300B12C78 /* HistoricalData.swift in Sources */,
 				C1CCDB4B1E966AAD00DBBA70 /* BaseCurrencyCell.swift in Sources */,
+				C1878A721EACD95D00B12C78 /* DateRange.swift in Sources */,
 				C1CCDB2F1E959C7000DBBA70 /* AppDelegate.swift in Sources */,
 				C1CCDB531E96957B00DBBA70 /* ConversoinRate.swift in Sources */,
 				C1CCDB4D1E968AA000DBBA70 /* ConversionTableViewController.swift in Sources */,
+				C1878A7A1EAD137F00B12C78 /* HistoricalDataStore.swift in Sources */,
+				C1878A761EAD04B900B12C78 /* HistoricalDataAPI.swift in Sources */,
 				C1CCDB571E969E4E00DBBA70 /* ConversionRatesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

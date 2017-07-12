@@ -9,8 +9,8 @@
 import Foundation
 
 class ConversionRate {
-    var toCurrency : String
-    var rate : Int
+    var toCurrency : String?
+    var rate : Int?
     
     init(toCurrency: String, rate: Int) {
         self.toCurrency = toCurrency

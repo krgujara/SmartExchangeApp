@@ -11,24 +11,81 @@ import Charts
 
 class HistoricalDataViewController : UIViewController
 {
-    var currency : String = ""
+    var toCurrencyForHistoricalData : String = ""
+    var baseCurrencyForHistoricalData : String = ""
+    
     @IBOutlet weak var lineChartView: LineChartView!
-    //@IBOutlet weak var barChartView: BarChartView!
     var months: [String]!
+    var store = HistoricalDataStore()
+    var historicalData = [HistoricalData]()
+    
+    
+    //closure
+    let numberFormatter = {() -> NSNumberFormatter in
+        let nf = NSNumberFormatter()
+        nf.numberStyle = .DecimalStyle
+        nf.minimumFractionDigits = 1
+        nf.maximumFractionDigits = 1
+        return nf
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
         navigationItem.title = "Historical Data"
         // Do any additional setup after loading the view, typically from a nib.
         
-        months = ["Jan", "Feb", "Mar", "Apr", "May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-        let unitsSold = [20.0,4.0,6.0,3.0,12.0,16.0,4.0,18.0,2.0,4.0,5.0,12.0]
-        setChart(months, values: unitsSold)
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let startDate = NSDate(timeIntervalSinceNow: -24*60*60*30-1)
+        
+        let endDate = NSDate(timeIntervalSinceNow: 0)
+        let dateRange = calendar.dateRange(startDate: startDate,
+                                           endDate: endDate,
+                                           stepUnits: .Day,
+                                           stepValue: 1)
+        let datesInRange = Array(dateRange)
+      
+            for date in datesInRange{
+                //print(date)
+                let styler = NSDateFormatter()
+                styler.dateFormat = "yyyy-MM-dd"
+                let dateString = styler.stringFromDate(date)
+
+                self.store.fetchHistoricalData(self.baseCurrencyForHistoricalData, toCurrency :self.toCurrencyForHistoricalData, date : dateString, completion :{(HistoricalDataResult)->Void in
+                    switch HistoricalDataResult{
+                    case .Success(let HistoricalData) :
+                        self.historicalData.append(HistoricalData)
+                        
+                        if self.historicalData.count == 30{
+                            
+                            print("Final Historical Data Count: \(self.historicalData.count)")
+                            var x_coordinates = [String]()
+                            var y_coordinates = [Double]()
+                            //var maxNumber = Double()
+                            //var minNumber = Double()
+                            for data in self.historicalData{
+                                print("\(data.date) \(data.rate!)")
+                                x_coordinates.append(String(data.date))
+                                let y_coordinates_string = self.numberFormatter().stringFromNumber(data.rate!)
+                                y_coordinates.append(Double(y_coordinates_string!)!)
+                               
+                            }
+                            self.setChart(x_coordinates, values: y_coordinates)
+                            
+                        }
+                        
+                    case .Failure(let error):
+                        print("Error fetching Data: \(error)")
+                    }
+                })
+                
+             }
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("Currency : + \(currency)")
+        print("Base Currency :  \(baseCurrencyForHistoricalData)")
+        print("To Currency : \(toCurrencyForHistoricalData)")
     }
     func setChart(dataPoints: [String], values: [Double]) {
         
@@ -40,21 +97,9 @@ class HistoricalDataViewController : UIViewController
         }
         
         
-        var colors: [UIColor] = []
-        
-        for _ in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            let color1 = UIColor.redColor()
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-            colors.append(color1)
-        }
-        
-        
-        let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
+        let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Conversion Rate Variations")
         let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
+        
     }
 }

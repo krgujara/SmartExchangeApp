@@ -11,7 +11,8 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
 {
     //var currenciesStore = CurrencyStore()
     var currencies = [Currency]()
-    var store : CurrencyStore!
+        
+        var store : CurrencyStore!
     //var currencies = currencyStore.store
     let searchBar = UISearchBar()
     var filteredCurrencies = [Currency]()
@@ -41,6 +42,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     //UI stuff here on main thread
+                    self.currencies.sortInPlace ({$0.currencyCode < $1.currencyCode})
                     self.tableView.reloadData()
                     
                     
@@ -69,7 +71,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
 
     func createSearchBar()
     {
-        print(#function)
+        //print(#function)
         
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Enter Your Base Currency"
@@ -84,7 +86,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         return 1
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function)
+        //print(#function)
         
         if shouldShowSearchResults{
             return filteredCurrencies.count
@@ -94,13 +96,13 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         }
     }
     override func viewWillAppear(animated: Bool) {
-        print(#function)
+        //print(#function)
         
         navigationItem.title = "Select Base Currency"
         
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(#function)
+        //print(#function)
         let cell = tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! BaseCurrencyCell
         let currency: Currency
         
@@ -110,11 +112,16 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         }else{
             currency = currencies[indexPath.row]
         }
-        
-        cell.currencyCodeLabel.text = currency.currencyCode
-        cell.currencyNameLabel.text = currency.fullCurrencyName
-        cell.currencyImage.image = UIImage(named: currency.currencyCode)
-        //use of dynamic type
+        if let currencyCode = currency.currencyCode, fullCurrencyName = currency.fullCurrencyName{
+        cell.currencyCodeLabel.text = currencyCode
+        cell.currencyNameLabel.text = fullCurrencyName
+        cell.currencyImage.image = UIImage(named: currencyCode)
+        }else{
+            cell.currencyCodeLabel.text = "no data"
+            cell.currencyNameLabel.text = "no data"
+            cell.currencyImage.image = UIImage(named: currency.currencyCode!)
+        }
+            //use of dynamic type
         cell.updateLabels()
         return cell
     }
@@ -126,19 +133,20 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
             
             if shouldShowSearchResults && filteredCurrencies.count>0 {
                 if let row = tableView.indexPathForSelectedRow?.row {
-                    let baseCurrency = filteredCurrencies[row].currencyCode   //errorrr
+                    
+                    let baseCurrency = filteredCurrencies[row].currencyCode!   //errorrr
                     
                     let destinationController = segue.destinationViewController as! ConversionTableViewController
                     destinationController.baseCurrency = baseCurrency
-                    print(baseCurrency)
+                    //print(baseCurrency)
                 }
             }else{
                 if let row = tableView.indexPathForSelectedRow?.row {
                     let baseCurrency = currencies[row].currencyCode
                     
                     let destinationController = segue.destinationViewController as! ConversionTableViewController
-                    destinationController.baseCurrency = baseCurrency
-                    print(baseCurrency)
+                    destinationController.baseCurrency = baseCurrency!
+                    //print(baseCurrency)
                 }
             }
         }
@@ -146,10 +154,10 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        print(#function)
+        //print(#function)
         
         filteredCurrencies = currencies.filter({ (Currency1) -> Bool in
-            return Currency1.currencyCode.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
+            return Currency1.currencyCode!.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
         })
 
         if searchText != ""
@@ -163,19 +171,19 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        print(#function)
+        //print(#function)
         
         shouldShowSearchResults = true
        // tableView.reloadData()
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        print(#function)
+        //print(#function)
         
         shouldShowSearchResults = false
         tableView.reloadData()
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print(#function)
+        //print(#function)
         
         shouldShowSearchResults = true
         searchBar.endEditing(true)
@@ -203,6 +211,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         tableView.reloadData()
     }
     */
+    
     
     @IBAction func backgroundPressed(){
         view.endEditing(true)
