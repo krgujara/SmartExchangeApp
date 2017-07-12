@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartEx/ConversionTableViewController.swift"
-            timestampString = "514618958.419631"
+            timestampString = "514842377.793051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "ConversionTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -103,109 +103,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SmartEx/BaseCurrencySelector.swift"
-            timestampString = "514770265.370655"
+            filePath = "SmartEx/CurrencyStore.swift"
+            timestampString = "514837096.360567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "BaseCurrencySelector"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "CurrencyStore"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SmartEx.BaseCurrencySelector.init (style : __C.UITableViewStyle) -&gt; SmartEx.BaseCurrencySelector"
-                  moduleName = "SmartEx"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/komalgujarathi/Documents/Semester%201/Mobile%20Application%20Programming/Project/SmartEx/SmartEx/BaseCurrencySelector.swift"
-                  timestampString = "514482217.050205"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "82">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SmartEx.BaseCurrencySelector.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; SmartEx.BaseCurrencySelector"
-                  moduleName = "SmartEx"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/komalgujarathi/Documents/Semester%201/Mobile%20Application%20Programming/Project/SmartEx/SmartEx/BaseCurrencySelector.swift"
-                  timestampString = "514482217.050482"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "139">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SmartEx.BaseCurrencySelector.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SmartEx.BaseCurrencySelector&gt;"
-                  moduleName = "SmartEx"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/komalgujarathi/Documents/Semester%201/Mobile%20Application%20Programming/Project/SmartEx/SmartEx/BaseCurrencySelector.swift"
-                  timestampString = "514482217.050765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "82">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartEx/CurrencyStore.swift"
-            timestampString = "514561468.587665"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "fetchListOfCurrencies(completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartEx/CurrencyStore.swift"
-            timestampString = "514561468.587665"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "init()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartEx/CurrencyStore.swift"
-            timestampString = "514561468.587665"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "init()"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -215,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartEx/BaseCurrencySelector.swift"
-            timestampString = "514770265.370655"
+            timestampString = "514842377.793051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
             <Locations>
@@ -263,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartEx/ConversionTableViewController.swift"
-            timestampString = "514777468.707683"
+            timestampString = "514842377.793051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -279,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartEx/ConversionTableViewController.swift"
-            timestampString = "514777468.707683"
+            timestampString = "514842377.793051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>

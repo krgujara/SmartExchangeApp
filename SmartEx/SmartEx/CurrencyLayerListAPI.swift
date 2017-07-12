@@ -6,6 +6,7 @@
 //  Copyright © 2017 Komal Gujarathi. All rights reserved.
 //
 
+
 import Foundation
 
 enum CurrencyLayerAPIResults{
@@ -16,7 +17,7 @@ enum CurrencyLayerAPIResults{
 enum CurrencyLayerError: ErrorType{
     case InvalidJSONData
 }
-
+//Struct which has information of API Key and important parameters required
 struct CurrencyLayerAPI
 {
     private static let baseUrlString = "http://apilayer.net/api/list"
@@ -43,21 +44,18 @@ struct CurrencyLayerAPI
         do{
             if let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: []){
                 if let jsonDictionary = jsonObject as? [String:AnyObject]{
-                    // print("JSON DICTIONARY:  \(jsonDictionary)")
                     
                     if let currencies = jsonDictionary["currencies"] as? [String: String] {
                         var finalCurrecies = [Currency]()
-                        //finalCurrecies.append(Currency(currencyCode: "AUS",fullCurrencyName: "AUSSSS"))
                         for (key, value) in currencies{
                             let currency = Currency(currencyCode: key,fullCurrencyName: value)
                             finalCurrecies.append(currency)
                         }
                         if finalCurrecies.count == 0 && currencies.count > 0{
-                            //we werent able to parse any ofthe photos
-                            //May be the json format of photos has changed
+                            //we werent able to parse any of the currencies
+                            //May be the json format of currencies has changed
                             return .Failure(CurrencyLayerError.InvalidJSONData)
                         }
-                        //print("Currencies::  \(currencies)")
                         return .Success(finalCurrecies)
                     }else{
                         return .Failure(CurrencyLayerError.InvalidJSONData)

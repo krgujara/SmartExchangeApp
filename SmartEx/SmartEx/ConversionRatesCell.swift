@@ -16,10 +16,10 @@ class ConversionRatesCell : UITableViewCell
     
     
     func updateLabels() {
-    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    //let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     //toCurrencyLabel.font = bodyFont
     
-    let captionFont = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
+    //let captionFont = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
     //rateLabel.font = captionFont
     }
 }

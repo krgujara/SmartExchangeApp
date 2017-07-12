@@ -29,6 +29,7 @@ class ConversionRateStore
         }
         task.resume()
         
+        
     }
     
     func processCurrencyList(data data : NSData?, error : NSError?) -> LiveCurrencyLayerAPIResults{

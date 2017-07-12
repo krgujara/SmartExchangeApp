@@ -8,6 +8,7 @@
 
 import Foundation
 
+//conversion Rate class holds all properties relating to Conversion of one currency to the other currency which user wants to see the conversions to
 class ConversionRate {
     var toCurrency : String?
     var rate : Int?

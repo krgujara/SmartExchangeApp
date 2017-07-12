@@ -26,7 +26,7 @@ class HistoricalDataViewController : UIViewController
         let nf = NSNumberFormatter()
         nf.numberStyle = .DecimalStyle
         nf.minimumFractionDigits = 1
-        nf.maximumFractionDigits = 1
+        nf.maximumFractionDigits = 3
         return nf
     }
 
@@ -65,9 +65,10 @@ class HistoricalDataViewController : UIViewController
                             //var maxNumber = Double()
                             //var minNumber = Double()
                             for data in self.historicalData{
-                                print("\(data.date) \(data.rate!)")
+                                //print("\(data.date) \(data.rate!)")
                                 self.x_coordinates.append(String(data.date))
                                 let y_coordinates_string = self.numberFormatter().stringFromNumber(data.rate!)
+                                print(y_coordinates_string)
                                 self.y_coordinates.append(Double(y_coordinates_string!)!)
                                
                             }
@@ -75,9 +76,21 @@ class HistoricalDataViewController : UIViewController
                             
                             
                         }
+                        
                         //self.setChart(months, values: unitsSold)
-                        //sleep(10)
-                        self.setChart(self.x_coordinates, values: self.y_coordinates)
+                        if self.historicalData.count == 30{
+                        //runs on the main thread
+                        dispatch_async(dispatch_get_main_queue(),{
+                            //UI stuff here on main thread
+                            //self.conversionRates.sortInPlace ({$0.toCurrency < $1.toCurrency})
+                            
+                            //self.tableView.reloadData()
+                              self.setChart(self.x_coordinates, values: self.y_coordinates)
+                        })
+
+                        }
+                        
+                      
                         
                     case .Failure(let error):
                         print("Error fetching Data: \(error)")

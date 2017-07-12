@@ -7,6 +7,9 @@
 //
 
 import UIKit
+
+//class which has outlets to all the properties of base Currency
+
 class BaseCurrencyCell : UITableViewCell
 {
     
@@ -15,17 +18,6 @@ class BaseCurrencyCell : UITableViewCell
     @IBOutlet weak var currencyCodeLabel: UILabel!
     
     @IBOutlet weak var currencyNameLabel: UILabel!
-    
-    
-    func updateLabels() {
-        let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        //currencyCodeLabel.font = bodyFont
-        
-        let captionFont = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
-        //currencyNameLabel.font = captionFont
-        
-        
-    }
 
 }
 

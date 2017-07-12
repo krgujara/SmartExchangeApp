@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//Model class to Store the currency information
 class Currency {
     var currencyCode : String?
     var fullCurrencyName : String?

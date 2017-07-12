@@ -8,10 +8,12 @@
 //
 
 import UIKit
+
+//Controller that manages the conversion of the base currency to the currency user wishes to convert base currency
 class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate
 {
     var store = ConversionRateStore()
- 
+    
     @IBOutlet var tableView: UITableView!
     var baseCurrency : String = ""
     var conversionFactor : Double? = 1
@@ -22,37 +24,32 @@ class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITa
     
     var conversionRates = [ConversionRate](){
         didSet{
-            //print("Conversino Factor: \(conversionFactor)")
+            
         }
     }
     
     override func viewDidLoad() {
-        
-        
         createSearchBar()
-
-        
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.delegate = self
-        
         
         //set contentInset for tableView
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
-
         
         
+        //API gives the data in the form of USD to all 169 currencies.
+        //Thus to get the actual data, for the
         store.fetchListOfConversionRates(){
             (ConversionRatesResult)->Void in
             switch ConversionRatesResult{
+            //if the conversion rates are properly found, it would execute this case
             case .Success(let conversionRates) :
-                //return allCurrencies
                 print("Successfully found \(conversionRates.count) Conversion Rates")
                 self.conversionRates = conversionRates
-
+                
                 for conversionRate in self.conversionRates {
                     let code = conversionRate.toCurrency! as NSString
                     let toCurrency = code.substringFromIndex(3)
@@ -63,31 +60,34 @@ class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITa
                             
                         }else{
                             self.conversionFactor = (Double)(1/(Double)(conversionRate.rate!))
-                            
-                            //print("ConversionRate and ConversionFactor\(conversionRate.rate) + \(self.conversionFactor!)")
-                            
                         }
                         break
                     }
                 }
+                
+                //runs on the main thread
                 dispatch_async(dispatch_get_main_queue(),{
                     //UI stuff here on main thread
                     self.conversionRates.sortInPlace ({$0.toCurrency < $1.toCurrency})
-                
+                    
                     self.tableView.reloadData()
                 })
-                
+            //if the conversion rates are not found properly
             case .Failure(let error):
-                print("Error fetching recent photos: \(error)")
-                //return finalCurrencies
+                print("Error fetching recent currency conversions: \(error)")
             }
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+        navigationItem.title = "Currency Converter"
+        
+    }
     
+    //function to create searchbar
     func createSearchBar()
     {
-        //print(#function)
         
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Enter Your To Currency"
@@ -95,101 +95,87 @@ class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITa
         self.navigationItem.titleView = searchBar
     }
     
-    override func viewWillAppear(animated: Bool) {
-        //print("Base Currency : \(baseCurrency)")
-        self.navigationController?.navigationBarHidden = false
-        //let controller = storyboard?.instantiateViewControllerWithIdentifier("View2")
-        
-        //self.navigationController!.pushViewController(controller!, animated: true)
-        navigationItem.title = "Currency Converter"
-        
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //print(#function)
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(#function)
         
-    
         if shouldShowSearchResults{
             return filteredCurrencies.count
         }else{
             print("number of rows in section\(conversionRates.count)")
-           return conversionRates.count
+            return conversionRates.count
         }
-
-    
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //print(#function)
         var rateFromBaseToDestinationCurrency : Double!
         let cell = tableView.dequeueReusableCellWithIdentifier("convertcell",forIndexPath: indexPath) as! ConversionRatesCell
-       
+        
         var conversionRate: ConversionRate
         conversionRate = conversionRates[indexPath.row]
         
         
-        if shouldShowSearchResults {
-            conversionRate = filteredCurrencies[indexPath.row]    //errorrr
+        if shouldShowSearchResults && filteredCurrencies.count>0{
+            conversionRate = filteredCurrencies[indexPath.row]
             
         }else{
             conversionRate = conversionRates[indexPath.row]
         }
-
+        
         let code = conversionRate.toCurrency! as NSString
         let toCurrency = code.substringFromIndex(3)
         cell.toCurrencyLabel.text = toCurrency
         
+        
         if let conversionFactor = conversionFactor {
             rateFromBaseToDestinationCurrency = conversionFactor*(Double)(conversionRate.rate!)
-            //print("Rate: \(rateFromBaseToDestinationCurrency)")
         }else{
             rateFromBaseToDestinationCurrency = 1*(Double)(conversionRate.rate!)
-            //print("Rate1 : \(rateFromBaseToDestinationCurrency)")
         }
         
         cell.rateLabel.text =  numberFormatter().stringFromNumber(rateFromBaseToDestinationCurrency)
-        //print("ConversionRate.toCurrency"+conversionRate.toCurrency)
-        
-        //print("To Currency: \(toCurrency)")
-        //print("Base Currency: \(baseCurrency)")
-        
         cell.flagImage.image = UIImage(named: toCurrency)
         
         cell.updateLabels()
         return cell
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("Segue invoked.")
         
         if segue.identifier == "ShowDetailSegue" {
             navigationItem.title = ""
-             if shouldShowSearchResults && filteredCurrencies.count>0 {
+            if shouldShowSearchResults && filteredCurrencies.count>0 {
                 if let row = tableView.indexPathForSelectedRow?.row {
                     
-                    let currency = filteredCurrencies[row].toCurrency!   //errorrr
+                    let currency = filteredCurrencies[row].toCurrency!   
                     let destinationController = segue.destinationViewController as! HistoricalDataViewController
                     destinationController.baseCurrencyForHistoricalData = String("USD" + baseCurrency)
                     destinationController.toCurrencyForHistoricalData = currency
                 }
-             }
+            }
             else
             {
-            if let row = tableView.indexPathForSelectedRow?.row {
-                let currency = conversionRates[row].toCurrency
-                
-                let destinationController = segue.destinationViewController as! HistoricalDataViewController
-                destinationController.baseCurrencyForHistoricalData = String("USD" + baseCurrency)
-                destinationController.toCurrencyForHistoricalData = currency!
+                if let row = tableView.indexPathForSelectedRow?.row {
+                    let currency = conversionRates[row].toCurrency
+                    
+                    let destinationController = segue.destinationViewController as! HistoricalDataViewController
+                    destinationController.baseCurrencyForHistoricalData = String("USD" + baseCurrency)
+                    destinationController.toCurrencyForHistoricalData = currency!
+                }
             }
-            }
+        } else if segue.identifier == "showRecommendations"{
+            let destinationsController = segue.destinationViewController as! RecommendationsViewConroller
+            destinationsController.myVar = "MYVariable"
+            
+
+        
         }
     }
-
+    
     // Set animation on cell
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.alpha = 0
@@ -207,18 +193,17 @@ class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITa
             cell.layer.transform = CATransform3DIdentity
         })
     }
-
+    
     //closure
     let numberFormatter = {() -> NSNumberFormatter in
         let nf = NSNumberFormatter()
         nf.numberStyle = .DecimalStyle
         nf.minimumFractionDigits = 1
-        nf.maximumFractionDigits = 1
+        nf.maximumFractionDigits = 3
         return nf
     }
-
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        //print(#function)
         
         filteredCurrencies = conversionRates.filter({ (Currency1) -> Bool in
             return Currency1.toCurrency!.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
@@ -235,20 +220,14 @@ class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITa
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        //print(#function)
-        
         shouldShowSearchResults = true
-        // tableView.reloadData()
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        //print(#function)
         
         shouldShowSearchResults = false
         tableView.reloadData()
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        //print(#function)
-        
         shouldShowSearchResults = true
         searchBar.endEditing(true)
         self.tableView.reloadData()
@@ -256,10 +235,8 @@ class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITa
         searchBar.resignFirstResponder()
     }
     
+    //to handle the gesture recognizer
     @IBAction func backgroundPressed(){
         view.endEditing(true)
     }
-
-    
-    
 }

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-fx-Ukv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cost de ivore" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-fx-Ukv">
                                 <rect key="frame" x="200" y="255" width="200" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Ilv-au-h6I"/>
@@ -47,6 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="646" height="223"/>
+        <image name="cost de ivore" width="470" height="311"/>
     </resources>
 </document>
