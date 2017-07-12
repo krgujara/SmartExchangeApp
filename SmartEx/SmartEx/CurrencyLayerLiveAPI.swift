@@ -19,7 +19,7 @@ enum LiveCurrencyLayerError: ErrorType{
 struct LiveCurrencyLayerAPI
 {
     private static let baseUrlString = "http://apilayer.net/api/live"
-    private static let APIKey = "1f0ccacc0da56cc5a48c860d8c6107b8"
+    private static let APIKey = "36eaaf74e346f2c8a65c26179fc3d301"
     var URL : NSURL
     
     

@@ -21,10 +21,10 @@ enum CurrencyLayerError: ErrorType{
 struct CurrencyLayerAPI
 {
     private static let baseUrlString = "http://apilayer.net/api/list"
-    private static let APIKey = "1f0ccacc0da56cc5a48c860d8c6107b8"
+    private static let APIKey = "36eaaf74e346f2c8a65c26179fc3d301"
     var URL : NSURL
     
-    
+ //this func generates the required URL
     static func currencyLayerURL()-> NSURL{
         let components = NSURLComponents(string: baseUrlString)!
         var queryItems = [NSURLQueryItem]()
@@ -39,6 +39,7 @@ struct CurrencyLayerAPI
         return components.URL!
     }
     
+    //this func queries the currenclylayer webserver for the list of currencies that it supports. result will be either fenum type of ailure or success- 3 letter currency codes for countries
     static func currenciesFromJSONData(data: NSData) -> CurrencyLayerAPIResults{
         
         do{
@@ -52,8 +53,7 @@ struct CurrencyLayerAPI
                             finalCurrecies.append(currency)
                         }
                         if finalCurrecies.count == 0 && currencies.count > 0{
-                            //we werent able to parse any of the currencies
-                            //May be the json format of currencies has changed
+                            
                             return .Failure(CurrencyLayerError.InvalidJSONData)
                         }
                         return .Success(finalCurrecies)

@@ -9,9 +9,10 @@
 import Foundation
 class Recommendations {
     var currency : String?
-    var rate : Int?
+    var rate : Double?
+    var fluctuation : Double?
     
-    init(currency: String?, rate: Int?) {
+    init(currency: String?, rate: Double?) {
         self.currency = currency
         self.rate = rate
     }

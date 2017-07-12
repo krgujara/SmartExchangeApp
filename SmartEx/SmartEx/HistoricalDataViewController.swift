@@ -35,12 +35,9 @@ class HistoricalDataViewController : UIViewController
         
         self.navigationController?.navigationBarHidden = false
         navigationItem.title = "Historical Data"
-        // Do any additional setup after loading the view, typically from a nib.
         
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let startDate = NSDate(timeIntervalSinceNow: -24*60*60*30-1)
+        let (calendar, startDate, endDate) = createStartDateEndDateAndCalendar()
         
-        let endDate = NSDate(timeIntervalSinceNow: 0)
         let dateRange = calendar.dateRange(startDate: startDate,
                                            endDate: endDate,
                                            stepUnits: .Day,
@@ -48,43 +45,42 @@ class HistoricalDataViewController : UIViewController
         let datesInRange = Array(dateRange)
       
             for date in datesInRange{
-                //print(date)
+                
                 let styler = NSDateFormatter()
                 styler.dateFormat = "yyyy-MM-dd"
                 let dateString = styler.stringFromDate(date)
-
+              
+                //this func returns the data with user selected base currency
                 self.store.fetchHistoricalData(self.baseCurrencyForHistoricalData, toCurrency :self.toCurrencyForHistoricalData, date : dateString, completion :{(HistoricalDataResult)->Void in
                     switch HistoricalDataResult{
                         
                     case .Success(let HistoricalData) :
                         self.historicalData.append(HistoricalData)
-                        
+                       
+                        //this loop is to ensure that the chart thread gets populated only after all the values in the historicaldata array are obtained.
                         if self.historicalData.count == 30 {
-                            print("Final Historical Data Count: \(self.historicalData.count)")
                             
-                            //var maxNumber = Double()
-                            //var minNumber = Double()
+                            
+                            
                             for data in self.historicalData{
-                                //print("\(data.date) \(data.rate!)")
+                                
                                 self.x_coordinates.append(String(data.date))
                                 let y_coordinates_string = self.numberFormatter().stringFromNumber(data.rate!)
-                                print(y_coordinates_string)
+                                
+                                //passing exchange rates and dates as y and x params to chart respectvely.
                                 self.y_coordinates.append(Double(y_coordinates_string!)!)
                                
                             }
-                           // self.setChart(x_coordinates, values: y_coordinates)
+                           
                             
                             
                         }
                         
-                        //self.setChart(months, values: unitsSold)
+                        
                         if self.historicalData.count == 30{
                         //runs on the main thread
                         dispatch_async(dispatch_get_main_queue(),{
-                            //UI stuff here on main thread
-                            //self.conversionRates.sortInPlace ({$0.toCurrency < $1.toCurrency})
                             
-                            //self.tableView.reloadData()
                               self.setChart(self.x_coordinates, values: self.y_coordinates)
                         })
 
@@ -99,10 +95,9 @@ class HistoricalDataViewController : UIViewController
          }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        print("Base Currency :  \(baseCurrencyForHistoricalData)")
-        print("To Currency : \(toCurrencyForHistoricalData)")
-    }
+    
+    
+    //setChart instantiats the linechartdata class and also animates it
     func setChart(dataPoints: [String], values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
@@ -112,10 +107,42 @@ class HistoricalDataViewController : UIViewController
             dataEntries.append(dataEntry)
         }
         
-        
         let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Conversion Rate Variations")
-        let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
-        lineChartView.data = lineChartData
+        applyTheme(to: lineChartDataSet)
         
+        let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
+        
+        lineChartView.drawGridBackgroundEnabled = false
+        lineChartView.legend.form = .Line
+        
+        lineChartView.data = lineChartData
+        lineChartView.data?.highlightEnabled = true
+        
+        lineChartView.animate(xAxisDuration: 3, easingOption: .EaseInOutQuart)
+    }
+    
+    private func applyTheme(to s: LineChartDataSet) {
+        
+        let gradientColors = [
+            
+            ChartColorTemplates.colorFromString("#8FEBFE").CGColor,
+            ChartColorTemplates.colorFromString("#B7EFFE").CGColor
+        ]
+        
+        let gradient = CGGradientCreateWithColors(nil, gradientColors, nil)!
+        s.fillAlpha = 0.5
+        s.fill = ChartFill.fillWithLinearGradient(gradient, angle: 90)
+        s.drawFilledEnabled = true
+        
+    }
+    
+    //function which returns tuple of calendar, startdate and enddate
+    
+    internal func createStartDateEndDateAndCalendar()->(NSCalendar, NSDate, NSDate){
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let startDate = NSDate(timeIntervalSinceNow: -24*60*60*30-1)
+        
+        let endDate = NSDate(timeIntervalSinceNow: 0)
+    return (calendar, startDate, endDate)
     }
 }

@@ -14,5 +14,7 @@ class RecommendationsCell : UITableViewCell
     @IBOutlet var currencyImage: UIImageView!
     @IBOutlet var currency : UILabel!
     
+    @IBOutlet weak var fluctuation: UILabel!
+    
     
 }

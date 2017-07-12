@@ -20,10 +20,10 @@ enum HistoricalDataError: ErrorType{
 struct HistoricalDataAPI
 {
     private static let baseUrlString = "http://apilayer.net/api/historical"
-    private static let APIKey = "1f0ccacc0da56cc5a48c860d8c6107b8"
+    private static let APIKey = "36eaaf74e346f2c8a65c26179fc3d301"
     var URL : NSURL
     
-    
+    //generates URL for fetching historical data
     static func historicalDataURL(date: String) -> NSURL {
         let components = NSURLComponents(string: baseUrlString)!
         var queryItems = [NSURLQueryItem]()
@@ -39,20 +39,20 @@ struct HistoricalDataAPI
         return components.URL!
     }
     
+    //fetches the historical data from the server. this function is being called by the controller
+    
     static func historicalDataFromJSONData(baseCurrency: String, toCurrency: String, date: String, data: NSData) -> HistoricalDataAPIResults{
-        //print("Inside Historical Data FromJSON: \(baseCurrency)")
-        //print("Inside Historical Data From JSON: \(toCurrency)")
+        
         do{
             if let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: []){
                 if let jsonDictionary = jsonObject as? [String:AnyObject]{
-                    // print("JSON DICTIONARY:  \(jsonDictionary)")
                     
-                    if let quotes = jsonDictionary["quotes"] as? [String: Int], let USDToBaseCurrencyRate = quotes["USDRUB"],let USDToToCurrency = quotes["USDINR"]{
-                             //print("BASE RATE: \(USDToBaseCurrencyRate)")
-                        //print("To Currency: \(USDToToCurrency)")
+                    
+                    if let quotes = jsonDictionary["quotes"] as? [String: Int], let USDToBaseCurrencyRate = quotes[baseCurrency],let USDToToCurrency = quotes[toCurrency]{
+                        
                         
                         let rate = (Double)((Double)(USDToToCurrency)/(Double)(USDToBaseCurrencyRate))
-                        //print("Rate: \(rate)")
+                        
                         let historicalDataForOneDate = HistoricalData(baseCurrency: baseCurrency, toCurrency: toCurrency, date: date, rate: rate)
 
                         return .Success(historicalDataForOneDate)

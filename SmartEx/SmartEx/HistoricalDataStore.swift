@@ -16,6 +16,7 @@ class HistoricalDataStore
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)}()
     
+    //fetches historical data for the given base and to currency
     
     func fetchHistoricalData(baseCurrency: String, toCurrency :String, date : String, completion : (HistoricalDataAPIResults)->Void) {
         let url = HistoricalDataAPI.historicalDataURL(date)
@@ -33,17 +34,7 @@ class HistoricalDataStore
         
     }
     
-    init(){
-        // getAllCurrencies()
-        // fetchListOfCurrencies()
-        
-    }
-    func getAllCurrencies()
-    {
-        for _ in 0..<5 {
-           // getCurrency()
-        }
-    }
+
     
     func processHistoricalData(baseCurrency: String, toCurrency :String, date: String, data : NSData?, error : NSError?) -> HistoricalDataAPIResults{
         guard let jsonData = data else{

@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		505AAC091EB3A1C40092188D /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505AAC041EB3A1C40092188D /* Recommendations.swift */; };
+		505AAC0A1EB3A1C40092188D /* RecommendationsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505AAC051EB3A1C40092188D /* RecommendationsAPI.swift */; };
+		505AAC0B1EB3A1C40092188D /* RecommendationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505AAC061EB3A1C40092188D /* RecommendationsCell.swift */; };
+		505AAC0C1EB3A1C40092188D /* RecommendationsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505AAC071EB3A1C40092188D /* RecommendationsStore.swift */; };
+		505AAC0D1EB3A1C40092188D /* RecommendationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505AAC081EB3A1C40092188D /* RecommendationTableViewController.swift */; };
 		C127E8221E986FC600174E5D /* HistoricalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */; };
 		C1878A6A1EA9A74F00B12C78 /* CurrencyLayerListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */; };
 		C1878A6F1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */; };
-		C1878A721EACD95D00B12C78 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A711EACD95D00B12C78 /* DateRange.swift */; };
 		C1878A761EAD04B900B12C78 /* HistoricalDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */; };
 		C1878A781EAD115300B12C78 /* HistoricalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A771EAD115300B12C78 /* HistoricalData.swift */; };
 		C1878A7A1EAD137F00B12C78 /* HistoricalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */; };
@@ -26,45 +30,8 @@
 		C1CCDB531E96957B00DBBA70 /* ConversoinRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCDB521E96957B00DBBA70 /* ConversoinRate.swift */; };
 		C1CCDB551E969AD600DBBA70 /* ConversionRateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCDB541E969AD600DBBA70 /* ConversionRateStore.swift */; };
 		C1CCDB571E969E4E00DBBA70 /* ConversionRatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCDB561E969E4E00DBBA70 /* ConversionRatesCell.swift */; };
-		C1DBAFB11EB185CD00766FAD /* RecommendationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DBAFB01EB185CD00766FAD /* RecommendationTableViewController.swift */; };
-		C1DBAFB31EB1860600766FAD /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DBAFB21EB1860600766FAD /* Recommendations.swift */; };
-		C1DBAFB51EB1861E00766FAD /* RecommendationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DBAFB41EB1861E00766FAD /* RecommendationsCell.swift */; };
-		C1DBAFB71EB1867D00766FAD /* RecommendationsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DBAFB61EB1867D00766FAD /* RecommendationsStore.swift */; };
-		C1DBAFBB1EB19F8500766FAD /* RecommendationsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DBAFBA1EB19F8500766FAD /* RecommendationsAPI.swift */; };
-		DDB31E7E1EB111A10003D8AB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB31E791EB1110C0003D8AB /* Charts.framework */; };
-		DDB31E7F1EB111A10003D8AB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DDB31E791EB1110C0003D8AB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD70FDA41EB8246A009B0526 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD70FDA31EB8246A009B0526 /* DateRange.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DDB31E781EB1110C0003D8AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
-		DDB31E7A1EB1110C0003D8AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
-			remoteInfo = "Charts-TV";
-		};
-		DDB31E7C1EB1110C0003D8AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
-			remoteInfo = ChartsTests;
-		};
-		DDB31E801EB111A10003D8AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C127E8271E986FE700174E5D /* Embed Frameworks */ = {
@@ -73,7 +40,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DDB31E7F1EB111A10003D8AB /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,10 +47,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		505AAC041EB3A1C40092188D /* Recommendations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
+		505AAC051EB3A1C40092188D /* RecommendationsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsAPI.swift; sourceTree = "<group>"; };
+		505AAC061EB3A1C40092188D /* RecommendationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsCell.swift; sourceTree = "<group>"; };
+		505AAC071EB3A1C40092188D /* RecommendationsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsStore.swift; sourceTree = "<group>"; };
+		505AAC081EB3A1C40092188D /* RecommendationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationTableViewController.swift; sourceTree = "<group>"; };
 		C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalDataViewController.swift; sourceTree = "<group>"; };
 		C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerListAPI.swift; sourceTree = "<group>"; };
 		C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerLiveAPI.swift; sourceTree = "<group>"; };
-		C1878A711EACD95D00B12C78 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalDataAPI.swift; sourceTree = "<group>"; };
 		C1878A771EAD115300B12C78 /* HistoricalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalData.swift; sourceTree = "<group>"; };
 		C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalDataStore.swift; sourceTree = "<group>"; };
@@ -102,12 +72,7 @@
 		C1CCDB521E96957B00DBBA70 /* ConversoinRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversoinRate.swift; sourceTree = "<group>"; };
 		C1CCDB541E969AD600DBBA70 /* ConversionRateStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionRateStore.swift; sourceTree = "<group>"; };
 		C1CCDB561E969E4E00DBBA70 /* ConversionRatesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionRatesCell.swift; sourceTree = "<group>"; };
-		C1DBAFB01EB185CD00766FAD /* RecommendationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationTableViewController.swift; sourceTree = "<group>"; };
-		C1DBAFB21EB1860600766FAD /* Recommendations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
-		C1DBAFB41EB1861E00766FAD /* RecommendationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsCell.swift; sourceTree = "<group>"; };
-		C1DBAFB61EB1867D00766FAD /* RecommendationsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsStore.swift; sourceTree = "<group>"; };
-		C1DBAFBA1EB19F8500766FAD /* RecommendationsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsAPI.swift; sourceTree = "<group>"; };
-		DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-2.2.2/Charts/Charts.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		DD70FDA31EB8246A009B0526 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateRange.swift; path = ../DateRange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDB31E7E1EB111A10003D8AB /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,43 +106,72 @@
 			isa = PBXGroup;
 			children = (
 				C1CCDB2E1E959C7000DBBA70 /* AppDelegate.swift */,
-				C1CCDB321E959C7000DBBA70 /* Main.storyboard */,
+				DDAF352A1EB6AD0400E16574 /* StoryBoards */,
+				DDAF35221EB6AB2300E16574 /* Base Currency Selection */,
+				DDAF35251EB6AB3800E16574 /* Conversion Rate Live */,
+				C1CCDB351E959C7000DBBA70 /* Assets.xcassets */,
+				C1CCDB3A1E959C7000DBBA70 /* Info.plist */,
+				DDAF35281EB6ACC400E16574 /* Historical Data */,
+				DDAF35291EB6ACE800E16574 /* Recommendations */,
+			);
+			path = SmartEx;
+			sourceTree = "<group>";
+		};
+		DDAF35221EB6AB2300E16574 /* Base Currency Selection */ = {
+			isa = PBXGroup;
+			children = (
 				C1CCDB421E95A34900DBBA70 /* Currency.swift */,
 				C1CCDB441E95A38100DBBA70 /* CurrencyStore.swift */,
 				C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */,
 				C1CCDB401E959D8C00DBBA70 /* BaseCurrencySelector.swift */,
 				C1CCDB4A1E966AAD00DBBA70 /* BaseCurrencyCell.swift */,
+			);
+			name = "Base Currency Selection";
+			sourceTree = "<group>";
+		};
+		DDAF35251EB6AB3800E16574 /* Conversion Rate Live */ = {
+			isa = PBXGroup;
+			children = (
 				C1CCDB4C1E968AA000DBBA70 /* ConversionTableViewController.swift */,
 				C1CCDB521E96957B00DBBA70 /* ConversoinRate.swift */,
 				C1CCDB541E969AD600DBBA70 /* ConversionRateStore.swift */,
 				C1CCDB561E969E4E00DBBA70 /* ConversionRatesCell.swift */,
 				C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */,
-				C1878A711EACD95D00B12C78 /* DateRange.swift */,
-				C1CCDB351E959C7000DBBA70 /* Assets.xcassets */,
-				C1CCDB3A1E959C7000DBBA70 /* Info.plist */,
-				C1CCDB371E959C7000DBBA70 /* LaunchScreen.storyboard */,
+			);
+			name = "Conversion Rate Live";
+			sourceTree = "<group>";
+		};
+		DDAF35281EB6ACC400E16574 /* Historical Data */ = {
+			isa = PBXGroup;
+			children = (
+				DD70FDA31EB8246A009B0526 /* DateRange.swift */,
 				C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */,
 				C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */,
 				C1878A771EAD115300B12C78 /* HistoricalData.swift */,
 				C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */,
-				DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */,
-				C1DBAFB01EB185CD00766FAD /* RecommendationTableViewController.swift */,
-				C1DBAFB21EB1860600766FAD /* Recommendations.swift */,
-				C1DBAFB41EB1861E00766FAD /* RecommendationsCell.swift */,
-				C1DBAFB61EB1867D00766FAD /* RecommendationsStore.swift */,
-				C1DBAFBA1EB19F8500766FAD /* RecommendationsAPI.swift */,
 			);
-			path = SmartEx;
+			name = "Historical Data";
 			sourceTree = "<group>";
 		};
-		DDB31E731EB1110C0003D8AB /* Products */ = {
+		DDAF35291EB6ACE800E16574 /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				DDB31E791EB1110C0003D8AB /* Charts.framework */,
-				DDB31E7B1EB1110C0003D8AB /* Charts.framework */,
-				DDB31E7D1EB1110C0003D8AB /* ChartsTests.xctest */,
+				505AAC041EB3A1C40092188D /* Recommendations.swift */,
+				505AAC051EB3A1C40092188D /* RecommendationsAPI.swift */,
+				505AAC061EB3A1C40092188D /* RecommendationsCell.swift */,
+				505AAC071EB3A1C40092188D /* RecommendationsStore.swift */,
+				505AAC081EB3A1C40092188D /* RecommendationTableViewController.swift */,
 			);
-			name = Products;
+			name = Recommendations;
+			sourceTree = "<group>";
+		};
+		DDAF352A1EB6AD0400E16574 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C1CCDB321E959C7000DBBA70 /* Main.storyboard */,
+				C1CCDB371E959C7000DBBA70 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +189,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DDB31E811EB111A10003D8AB /* PBXTargetDependency */,
 			);
 			name = SmartEx;
 			productName = SmartEx;
@@ -229,42 +221,12 @@
 			mainGroup = C1CCDB221E959C7000DBBA70;
 			productRefGroup = C1CCDB2C1E959C7000DBBA70 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DDB31E731EB1110C0003D8AB /* Products */;
-					ProjectRef = DDB31E721EB1110C0003D8AB /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				C1CCDB2A1E959C7000DBBA70 /* SmartEx */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DDB31E791EB1110C0003D8AB /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = DDB31E781EB1110C0003D8AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DDB31E7B1EB1110C0003D8AB /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = DDB31E7A1EB1110C0003D8AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DDB31E7D1EB1110C0003D8AB /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = DDB31E7C1EB1110C0003D8AB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C1CCDB291E959C7000DBBA70 /* Resources */ = {
@@ -288,20 +250,20 @@
 				C1CCDB411E959D8C00DBBA70 /* BaseCurrencySelector.swift in Sources */,
 				C1CCDB451E95A38100DBBA70 /* CurrencyStore.swift in Sources */,
 				C1878A6F1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift in Sources */,
-				C1DBAFB31EB1860600766FAD /* Recommendations.swift in Sources */,
 				C1CCDB551E969AD600DBBA70 /* ConversionRateStore.swift in Sources */,
 				C127E8221E986FC600174E5D /* HistoricalDataViewController.swift in Sources */,
 				C1878A6A1EA9A74F00B12C78 /* CurrencyLayerListAPI.swift in Sources */,
+				505AAC0D1EB3A1C40092188D /* RecommendationTableViewController.swift in Sources */,
+				DD70FDA41EB8246A009B0526 /* DateRange.swift in Sources */,
+				505AAC0C1EB3A1C40092188D /* RecommendationsStore.swift in Sources */,
 				C1878A781EAD115300B12C78 /* HistoricalData.swift in Sources */,
+				505AAC0A1EB3A1C40092188D /* RecommendationsAPI.swift in Sources */,
 				C1CCDB4B1E966AAD00DBBA70 /* BaseCurrencyCell.swift in Sources */,
-				C1DBAFB51EB1861E00766FAD /* RecommendationsCell.swift in Sources */,
-				C1878A721EACD95D00B12C78 /* DateRange.swift in Sources */,
+				505AAC0B1EB3A1C40092188D /* RecommendationsCell.swift in Sources */,
 				C1CCDB2F1E959C7000DBBA70 /* AppDelegate.swift in Sources */,
+				505AAC091EB3A1C40092188D /* Recommendations.swift in Sources */,
 				C1CCDB531E96957B00DBBA70 /* ConversoinRate.swift in Sources */,
-				C1DBAFB71EB1867D00766FAD /* RecommendationsStore.swift in Sources */,
-				C1DBAFB11EB185CD00766FAD /* RecommendationTableViewController.swift in Sources */,
 				C1CCDB4D1E968AA000DBBA70 /* ConversionTableViewController.swift in Sources */,
-				C1DBAFBB1EB19F8500766FAD /* RecommendationsAPI.swift in Sources */,
 				C1878A7A1EAD137F00B12C78 /* HistoricalDataStore.swift in Sources */,
 				C1878A761EAD04B900B12C78 /* HistoricalDataAPI.swift in Sources */,
 				C1CCDB571E969E4E00DBBA70 /* ConversionRatesCell.swift in Sources */,
@@ -309,14 +271,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DDB31E811EB111A10003D8AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Charts-iOS";
-			targetProxy = DDB31E801EB111A10003D8AB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C1CCDB321E959C7000DBBA70 /* Main.storyboard */ = {
@@ -425,11 +379,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SmartEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujarathikomal.SmartEx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartEx/SmartEx-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -437,11 +395,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SmartEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujarathikomal.SmartEx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartEx/SmartEx-Bridging-Header.h";
 			};
 			name = Release;
 		};

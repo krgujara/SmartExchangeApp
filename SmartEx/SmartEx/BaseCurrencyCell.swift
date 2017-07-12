@@ -18,6 +18,14 @@ class BaseCurrencyCell : UITableViewCell
     @IBOutlet weak var currencyCodeLabel: UILabel!
     
     @IBOutlet weak var currencyNameLabel: UILabel!
+  
+    //this func enables the nocurrency prototype cell to use this same class by formatting the previous information
+    override func prepareForReuse() {
+        
+        currencyImage?.image = nil
+        currencyCodeLabel?.text = nil
+        currencyNameLabel?.text = nil
+    }
 
 }
 

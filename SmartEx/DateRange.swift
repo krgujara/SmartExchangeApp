@@ -8,6 +8,8 @@
 
 import Foundation
 
+//this file extends the NSCalendar and creates a dateRange function which is used in the historical and recommendation pakages
+
 func > (left: NSDate, right: NSDate) -> Bool {
     return left.compare(right) == .OrderedDescending
 }
@@ -56,17 +58,4 @@ struct DateRange :SequenceType {
     }
 }
 
-// Usage:
-func testDateRange() {
-    let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-    let startDate = NSDate(timeIntervalSinceNow: 0)
-    let endDate = NSDate(timeIntervalSinceNow: 24*60*60*7-1)
-    let dateRange = calendar.dateRange(startDate: startDate,
-                                       endDate: endDate,
-                                       stepUnits: .Day,
-                                       stepValue: 1)
-    let datesInRange = Array(dateRange)
-    for date in datesInRange{
-        print(date)
-    }
-}
+

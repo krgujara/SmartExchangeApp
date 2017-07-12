@@ -14,11 +14,12 @@ class CurrencyStore
 {
     var store = [Currency]()
     
+    //generates a default configuration session
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)}()
     
-    
+    //fetches the list of currencies that are supported by the currencylayer API
     func fetchListOfCurrencies(completion completion : (CurrencyLayerAPIResults)->Void) {
         let url = CurrencyLayerAPI.currencyLayerURL()
         let request = NSURLRequest(URL: url)
@@ -37,7 +38,7 @@ class CurrencyStore
     init(){
         
     }
-    //Processes Currency list from the information we download from the web server
+    //this function gets internally called by the fetchListOfCurrencies(). Processes Currency list from the information we download from the web server
     func processCurrencyList(data data : NSData?, error : NSError?) -> CurrencyLayerAPIResults{
         guard let jsonData = data else{
             return .Failure(error!)

@@ -19,10 +19,10 @@ enum RecommendationsDataError: ErrorType{
 struct RecommendationsDataAPI
 {
     private static let baseUrlString = "http://apilayer.net/api/historical"
-    private static let APIKey = "1f0ccacc0da56cc5a48c860d8c6107b8"
+    private static let APIKey = "36eaaf74e346f2c8a65c26179fc3d301"
     var URL : NSURL
     
-    
+    //returns the URL for accessing data for any given date
     static func RecommendationURL(date: String) -> NSURL {
         let components = NSURLComponents(string: baseUrlString)!
         var queryItems = [NSURLQueryItem]()
@@ -38,32 +38,29 @@ struct RecommendationsDataAPI
         return components.URL!
     }
     
+    //queries the web server for the data in the JSON format. returns an enum type with success or failure
     static func RecommendationsDataFromJSONData(baseCurrency: String, toCurrency: String, date: String, data: NSData) -> RecommendationsAPIResults{
-        //print("Inside Historical Data FromJSON: \(baseCurrency)")
-        //print("Inside Historical Data From JSON: \(toCurrency)")
+        
         do{
             if let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: []){
                 if let jsonDictionary = jsonObject as? [String:AnyObject]{
-                    // print("JSON DICTIONARY:  \(jsonDictionary)")
-                    
-                    //, let USDToBaseCurrencyRate = quotes[baseCurrency],let USDToToCurrency = quotes[toCurrency]
                     
                     
                     
-                    if let quotes = jsonDictionary["quotes"] as? [String: Int] {
+                    
+                    if let quotes = jsonDictionary["quotes"] as? [String: Double] {
                         var finalRecommendations = [Recommendations]()
-                        //finalCurrecies.append(Currency(currencyCode: "AUS",fullCurrencyName: "AUSSSS"))
+                        
                         for (key, value) in quotes{
-                            //let currency = Currency(currencyCode: key,fullCurrencyName: value)
+                            
                             let recommendationData = Recommendations(currency: key, rate: value)
                             finalRecommendations.append(recommendationData)
                         }
                         if finalRecommendations.count == 0 && quotes.count > 0{
-                            //we werent able to parse any ofthe photos
-                            //May be the json format of photos has changed
+                            
                             return .Failure(RecommendationsDataError.InvalidJSONData)
                         }
-                        //print("Currencies::  \(currencies)")
+                        
                         return .Success(finalRecommendations)
                     }else{
                         return .Failure(RecommendationsDataError.InvalidJSONData)

@@ -31,8 +31,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         super.viewDidLoad()
         
         createSearchBar()
-        
-        
+        //this function returns the list of currencies in to the currency array and its sorted with alphabetical order
         store.fetchListOfCurrencies(){
             (CurrencyLayerAPIResults)->Void in
             switch CurrencyLayerAPIResults{
@@ -41,7 +40,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
                 self.currencies = currencies
                 
                 dispatch_async(dispatch_get_main_queue(),{
-                    //UI stuff here on main thread
+                    //code in this part runs on main thread
                     self.currencies.sortInPlace ({$0.currencyCode < $1.currencyCode})
                     self.tableView.reloadData()
                     
@@ -53,6 +52,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
                 
             }
         }
+        
         self.tableView.reloadData()
         
     }
@@ -65,19 +65,23 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         
     }
     
-    //table view functions
+    //returns number of sections in a tableview
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         print(#function)
         
         return 1
     }
     
+    //sets height of the cell as 85
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 85
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if shouldShowSearchResults && filteredCurrencies.count>0{
-            return filteredCurrencies.count
-        }else{
-            print("number of rows in section\(currencies.count)")
+        if shouldShowSearchResults {
+            return filteredCurrencies.count == 0 ? 1 : filteredCurrencies.count
+        } else {
             return currencies.count
         }
     }
@@ -85,30 +89,41 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
     
     //tableView function to determine the cell for each row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell",forIndexPath: indexPath) as! BaseCurrencyCell
+        
+        // cell could be either noresultsBaseCell prototype or cell prototype
+        let cell = tableView.dequeueReusableCellWithIdentifier( shouldShowSearchResults && filteredCurrencies.count == 0 ? "noResultsBaseCell" : "cell",forIndexPath: indexPath) as! BaseCurrencyCell
+        
         let currency: Currency
         
-        if shouldShowSearchResults && filteredCurrencies.count<0{
-            currency = filteredCurrencies[indexPath.row]    
+        if shouldShowSearchResults {
             
-        }else{
+            if filteredCurrencies.count == 0 {
+                
+                cell.currencyCodeLabel.text = "No matching currencies"
+                cell.accessoryType = .None
+                return cell
+                
+            } else {
+                
+                cell.accessoryType = .DisclosureIndicator
+                currency = filteredCurrencies[indexPath.row]
+            }
+            
+        } else {
+            
             currency = currencies[indexPath.row]
         }
-        if let currencyCode = currency.currencyCode, fullCurrencyName = currency.fullCurrencyName{
-            cell.currencyCodeLabel.text = currencyCode
-            cell.currencyNameLabel.text = fullCurrencyName
-            cell.currencyImage.image = UIImage(named: currencyCode)
-        }else{
-            cell.currencyCodeLabel.text = "no data"
-            cell.currencyNameLabel.text = "no data"
-            cell.currencyImage.image = UIImage(named: currency.currencyCode!)
-        }
+        
+        cell.currencyCodeLabel.text = currency.currencyCode ?? "No data"
+        cell.currencyNameLabel.text = currency.fullCurrencyName ?? "No data"
+        cell.currencyImage.image = UIImage(named: currency.currencyCode ?? "DCI")
+        
         return cell
     }
     //segue to send data to the destinatino view controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("Segue invoked.")
         
+        // showitem segue evokes conversion table view controller and passes base currency value
         if segue.identifier == "ShowItem" {
             navigationItem.title = ""
             
@@ -131,7 +146,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         }
     }
     
-    //Search bar functions
+    //instantiating a searchbar
     func createSearchBar()
     {
         
@@ -140,6 +155,8 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
+    
+    //function that filters the currency list based on the user input
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -158,8 +175,8 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        
-        shouldShowSearchResults = true
+        //sandra changed it to false
+        shouldShowSearchResults = false
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
@@ -178,6 +195,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
     
+    
     // Set animation on cell
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.alpha = 0
@@ -190,7 +208,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         }
         cell.layer.transform = animateTransform
         
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animateWithDuration(1, animations: { () -> Void in
             cell.alpha = 1
             cell.layer.transform = CATransform3DIdentity
         })
