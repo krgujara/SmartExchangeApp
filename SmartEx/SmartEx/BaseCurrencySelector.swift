@@ -65,7 +65,7 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
         let nf = NSNumberFormatter()
         nf.numberStyle = .DecimalStyle
         nf.minimumFractionDigits = 1
-        nf.maximumFractionDigits = 2
+        nf.maximumFractionDigits = 1
         return nf
     }
 

@@ -24,10 +24,18 @@
                                     <constraint firstAttribute="height" constant="90" id="aeR-HV-7U8"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Copyright (c) 2017 Syracuse University. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxL-CU-cHd">
+                                <rect key="frame" x="75" y="559" width="450" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="r1x-N8-7Ph" firstAttribute="top" secondItem="QxL-CU-cHd" secondAttribute="bottom" constant="20" id="5o9-xL-64g"/>
+                            <constraint firstItem="QxL-CU-cHd" firstAttribute="centerX" secondItem="7vD-lg-Cea" secondAttribute="centerX" id="689-YZ-Vtk"/>
                             <constraint firstItem="r5f-fx-Ukv" firstAttribute="centerX" secondItem="7vD-lg-Cea" secondAttribute="centerX" id="dth-p9-gh8"/>
                             <constraint firstItem="r5f-fx-Ukv" firstAttribute="centerY" secondItem="7vD-lg-Cea" secondAttribute="centerY" id="fWY-wH-zWs"/>
                         </constraints>

@@ -21,7 +21,7 @@ public class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     {
         // default color
         //circleColors.append(UIColor(red: 140.0/255.0, green: 234.0/255.0, blue: 255.0/255.0, alpha: 1.0))
-        circleColors.append(UIColor.blackColor())
+        circleColors.append(UIColor.whiteColor())
     }
     
     public required init()
@@ -40,7 +40,7 @@ public class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     
     // MARK: - Styling functions and accessors
     
-    private var _cubicIntensity = CGFloat(0.2)
+    private var _cubicIntensity = CGFloat(1)
     
     /// Intensity for cubic lines (min = 0.05, max = 1)
     ///
@@ -66,13 +66,13 @@ public class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     }
     
     /// If true, cubic lines are drawn instead of linear
-    public var drawCubicEnabled = false
+    public var drawCubicEnabled = true
     
     /// - returns: true if drawing cubic lines is enabled, false if not.
     public var isDrawCubicEnabled: Bool { return drawCubicEnabled }
     
     /// The radius of the drawn circles.
-    public var circleRadius = CGFloat(3.0)
+    public var circleRadius = CGFloat(6.0)
     
     public var circleColors = [UIColor]()
     

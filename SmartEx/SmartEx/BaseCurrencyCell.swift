@@ -19,10 +19,10 @@ class BaseCurrencyCell : UITableViewCell
     
     func updateLabels() {
         let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        currencyCodeLabel.font = bodyFont
+        //currencyCodeLabel.font = bodyFont
         
         let captionFont = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
-        currencyNameLabel.font = captionFont
+        //currencyNameLabel.font = captionFont
         
         
     }

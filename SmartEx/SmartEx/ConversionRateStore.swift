@@ -11,8 +11,6 @@ import Foundation
 class ConversionRateStore
 {
     var conversionStore = [ConversionRate]()
-    //----------------------
-
     var store = [ConversionRate]()
     
     let session: NSURLSession = {
@@ -32,8 +30,6 @@ class ConversionRateStore
         task.resume()
         
     }
-    
-   
     
     func processCurrencyList(data data : NSData?, error : NSError?) -> LiveCurrencyLayerAPIResults{
         guard let jsonData = data else{
@@ -72,20 +68,5 @@ class ConversionRateStore
                 //return finalCurrencies
             }
         }
-        
-       /*for i in 0..<listOfCurrencyConversion.count {
-            getConversionRate(i)
-         }*/
-    }
-    /*
-    
-    func getConversionRate(ofCurrency : Int)->ConversionRate
-    {
- 
-        let conversionRate = ConversionRate(toCurrency : listOfCurrencyConversion[ofCurrency],rate: listOfRates[ofCurrency])
-
-        conversionStore.append(conversionRate)
-        return conversionRate
-    }
- */
-}
+       }
+   }

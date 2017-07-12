@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C109AD8A1EAF8F9A00AE3453 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C109AD891EAF8F9A00AE3453 /* RecommendationsViewController.swift */; };
 		C127E8221E986FC600174E5D /* HistoricalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */; };
-		C127E8351E99835B00174E5D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C127E8301E9982D700174E5D /* Charts.framework */; };
-		C127E8361E99835B00174E5D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C127E8301E9982D700174E5D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1878A6A1EA9A74F00B12C78 /* CurrencyLayerListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */; };
 		C1878A6F1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */; };
 		C1878A721EACD95D00B12C78 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1878A711EACD95D00B12C78 /* DateRange.swift */; };
@@ -30,37 +29,6 @@
 		C1CCDB571E969E4E00DBBA70 /* ConversionRatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCDB561E969E4E00DBBA70 /* ConversionRatesCell.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C127E82F1E9982D700174E5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C127E8291E9982D700174E5D /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
-		C127E8311E9982D700174E5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C127E8291E9982D700174E5D /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
-			remoteInfo = "Charts-TV";
-		};
-		C127E8331E9982D700174E5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C127E8291E9982D700174E5D /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
-			remoteInfo = ChartsTests;
-		};
-		C127E8371E99835B00174E5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C127E8291E9982D700174E5D /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		C127E8271E986FE700174E5D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -68,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C127E8361E99835B00174E5D /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,8 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C109AD891EAF8F9A00AE3453 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		C127E8211E986FC600174E5D /* HistoricalDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalDataViewController.swift; sourceTree = "<group>"; };
-		C127E8291E9982D700174E5D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		C1878A691EA9A74F00B12C78 /* CurrencyLayerListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerListAPI.swift; sourceTree = "<group>"; };
 		C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerLiveAPI.swift; sourceTree = "<group>"; };
 		C1878A711EACD95D00B12C78 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
@@ -105,23 +72,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C127E8351E99835B00174E5D /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C127E82A1E9982D700174E5D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C127E8301E9982D700174E5D /* Charts.framework */,
-				C127E8321E9982D700174E5D /* Charts.framework */,
-				C127E8341E9982D700174E5D /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C1CCDB221E959C7000DBBA70 = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +110,6 @@
 				C1CCDB561E969E4E00DBBA70 /* ConversionRatesCell.swift */,
 				C1878A6E1EAAAF3300B12C78 /* CurrencyLayerLiveAPI.swift */,
 				C1878A711EACD95D00B12C78 /* DateRange.swift */,
-				C127E8291E9982D700174E5D /* Charts.xcodeproj */,
 				C1CCDB351E959C7000DBBA70 /* Assets.xcassets */,
 				C1CCDB3A1E959C7000DBBA70 /* Info.plist */,
 				C1CCDB371E959C7000DBBA70 /* LaunchScreen.storyboard */,
@@ -162,6 +117,7 @@
 				C1878A751EAD04B900B12C78 /* HistoricalDataAPI.swift */,
 				C1878A771EAD115300B12C78 /* HistoricalData.swift */,
 				C1878A791EAD137F00B12C78 /* HistoricalDataStore.swift */,
+				C109AD891EAF8F9A00AE3453 /* RecommendationsViewController.swift */,
 			);
 			path = SmartEx;
 			sourceTree = "<group>";
@@ -181,7 +137,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				C127E8381E99835B00174E5D /* PBXTargetDependency */,
 			);
 			name = SmartEx;
 			productName = SmartEx;
@@ -214,42 +169,12 @@
 			mainGroup = C1CCDB221E959C7000DBBA70;
 			productRefGroup = C1CCDB2C1E959C7000DBBA70 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C127E82A1E9982D700174E5D /* Products */;
-					ProjectRef = C127E8291E9982D700174E5D /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				C1CCDB2A1E959C7000DBBA70 /* SmartEx */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C127E8301E9982D700174E5D /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = C127E82F1E9982D700174E5D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C127E8321E9982D700174E5D /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = C127E8311E9982D700174E5D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C127E8341E9982D700174E5D /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = C127E8331E9982D700174E5D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C1CCDB291E959C7000DBBA70 /* Resources */ = {
@@ -284,19 +209,12 @@
 				C1CCDB4D1E968AA000DBBA70 /* ConversionTableViewController.swift in Sources */,
 				C1878A7A1EAD137F00B12C78 /* HistoricalDataStore.swift in Sources */,
 				C1878A761EAD04B900B12C78 /* HistoricalDataAPI.swift in Sources */,
+				C109AD8A1EAF8F9A00AE3453 /* RecommendationsViewController.swift in Sources */,
 				C1CCDB571E969E4E00DBBA70 /* ConversionRatesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C127E8381E99835B00174E5D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Charts-iOS";
-			targetProxy = C127E8371E99835B00174E5D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C1CCDB321E959C7000DBBA70 /* Main.storyboard */ = {

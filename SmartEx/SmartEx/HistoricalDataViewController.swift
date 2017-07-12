@@ -18,7 +18,8 @@ class HistoricalDataViewController : UIViewController
     var months: [String]!
     var store = HistoricalDataStore()
     var historicalData = [HistoricalData]()
-    
+    var x_coordinates = [String]()
+    var y_coordinates = [Double]()
     
     //closure
     let numberFormatter = {() -> NSNumberFormatter in
@@ -29,9 +30,9 @@ class HistoricalDataViewController : UIViewController
         return nf
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBarHidden = false
         navigationItem.title = "Historical Data"
         // Do any additional setup after loading the view, typically from a nib.
@@ -54,33 +55,35 @@ class HistoricalDataViewController : UIViewController
 
                 self.store.fetchHistoricalData(self.baseCurrencyForHistoricalData, toCurrency :self.toCurrencyForHistoricalData, date : dateString, completion :{(HistoricalDataResult)->Void in
                     switch HistoricalDataResult{
+                        
                     case .Success(let HistoricalData) :
                         self.historicalData.append(HistoricalData)
                         
-                        if self.historicalData.count == 30{
-                            
+                        if self.historicalData.count == 30 {
                             print("Final Historical Data Count: \(self.historicalData.count)")
-                            var x_coordinates = [String]()
-                            var y_coordinates = [Double]()
+                            
                             //var maxNumber = Double()
                             //var minNumber = Double()
                             for data in self.historicalData{
                                 print("\(data.date) \(data.rate!)")
-                                x_coordinates.append(String(data.date))
+                                self.x_coordinates.append(String(data.date))
                                 let y_coordinates_string = self.numberFormatter().stringFromNumber(data.rate!)
-                                y_coordinates.append(Double(y_coordinates_string!)!)
+                                self.y_coordinates.append(Double(y_coordinates_string!)!)
                                
                             }
-                            self.setChart(x_coordinates, values: y_coordinates)
+                           // self.setChart(x_coordinates, values: y_coordinates)
+                            
                             
                         }
+                        //self.setChart(months, values: unitsSold)
+                        //sleep(10)
+                        self.setChart(self.x_coordinates, values: self.y_coordinates)
                         
                     case .Failure(let error):
                         print("Error fetching Data: \(error)")
                     }
                 })
-                
-             }
+         }
     }
     
     override func viewWillAppear(animated: Bool) {
