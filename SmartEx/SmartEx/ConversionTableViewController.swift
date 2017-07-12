@@ -8,10 +8,11 @@
 //
 
 import UIKit
-class ConversionTableViewController : UITableViewController, UISearchBarDelegate
+class ConversionTableViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate
 {
     var store = ConversionRateStore()
  
+    @IBOutlet var tableView: UITableView!
     var baseCurrency : String = ""
     var conversionFactor : Double? = 1
     
@@ -32,6 +33,18 @@ class ConversionTableViewController : UITableViewController, UISearchBarDelegate
 
         
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        
+        //set contentInset for tableView
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = insets
+
+        
+        
         store.fetchListOfConversionRates(){
             (ConversionRatesResult)->Void in
             switch ConversionRatesResult{
@@ -39,20 +52,17 @@ class ConversionTableViewController : UITableViewController, UISearchBarDelegate
                 //return allCurrencies
                 print("Successfully found \(conversionRates.count) Conversion Rates")
                 self.conversionRates = conversionRates
-                //self.tableView.reloadData()
-                //return allCurrencies
-                //print("Base Currency View did Load: \(self.baseCurrency)")
+
                 for conversionRate in self.conversionRates {
                     let code = conversionRate.toCurrency! as NSString
                     let toCurrency = code.substringFromIndex(3)
                     if toCurrency == self.baseCurrency{
                         if conversionRate.rate == 0
                         {
-                            //print("ConversionRate and ConversionFactor\(conversionRate.rate) + \(self.conversionFactor!)")
                             self.conversionFactor = (Double)(1/(Double)(999))
                             
                         }else{
-                            //self.conversionFactor = (Double)(1/(Double)(conversionRate.rate!))
+                            self.conversionFactor = (Double)(1/(Double)(conversionRate.rate!))
                             
                             //print("ConversionRate and ConversionFactor\(conversionRate.rate) + \(self.conversionFactor!)")
                             
@@ -62,7 +72,7 @@ class ConversionTableViewController : UITableViewController, UISearchBarDelegate
                 }
                 dispatch_async(dispatch_get_main_queue(),{
                     //UI stuff here on main thread
-                    self.conversionRates.sortInPlace ({$0.toCurrency > $1.toCurrency})
+                    self.conversionRates.sortInPlace ({$0.toCurrency < $1.toCurrency})
                 
                     self.tableView.reloadData()
                 })
@@ -95,11 +105,11 @@ class ConversionTableViewController : UITableViewController, UISearchBarDelegate
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         //print(#function)
         return 1
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(#function)
         
     
@@ -114,7 +124,7 @@ class ConversionTableViewController : UITableViewController, UISearchBarDelegate
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //print(#function)
         var rateFromBaseToDestinationCurrency : Double!
         let cell = tableView.dequeueReusableCellWithIdentifier("convertcell",forIndexPath: indexPath) as! ConversionRatesCell
@@ -178,6 +188,24 @@ class ConversionTableViewController : UITableViewController, UISearchBarDelegate
             }
             }
         }
+    }
+
+    // Set animation on cell
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.alpha = 0
+        
+        // Odd rows come from left side
+        var animateTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+        // Even rows come from right side
+        if (indexPath.row % 2 == 0) {
+            animateTransform = CATransform3DTranslate(CATransform3DIdentity, 500, 10, 0)
+        }
+        cell.layer.transform = animateTransform
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        })
     }
 
     //closure

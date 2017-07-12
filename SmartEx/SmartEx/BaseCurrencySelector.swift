@@ -212,6 +212,24 @@ class BaseCurrencySelector : UITableViewController, UISearchBarDelegate
     }
     */
     
+    // Set animation on cell
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.alpha = 0
+        
+        // Odd rows come from left side
+        var animateTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+        // Even rows come from right side
+        if (indexPath.row % 2 == 0) {
+            animateTransform = CATransform3DTranslate(CATransform3DIdentity, 500, 10, 0)
+        }
+        cell.layer.transform = animateTransform
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        })
+    }
+
     
     @IBAction func backgroundPressed(){
         view.endEditing(true)
